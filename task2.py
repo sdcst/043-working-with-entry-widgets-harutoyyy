@@ -18,4 +18,5 @@ first = tk.Entry
 second = tk.Entry
 
 def hypotenuse():
-    first^2 + second^2
+    first^2 + second^2 = answer
+    
