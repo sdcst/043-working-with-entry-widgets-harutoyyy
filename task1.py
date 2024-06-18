@@ -6,36 +6,47 @@ Create entry widets to allow user to enter their:
 * grade
 
 Create a button so that when they click on the button, it states all of the information in a 4th entry widget
-"""
 
-
-
-#!python3
-"""
 Assigning a function to a Button widget
 Getting and Inserting Entry widgets
 """
+
+
 import tkinter as tk
-from tkinter import *
 
-root = Tk()
-root.title("Entry box")
-root.geometry("700x500")
+def display_info():
+    name = entry_name.get()
+    student_number = entry_student_number.get()
+    grade = entry_grade.get()
+    info = f"Name: {name}, Student Number: {student_number}, Grade: {grade}"
+    entry_info.delete(0, tk.END)
+    entry_info.insert(0, info)
 
-my_entries = []
 
-def something():
+root = tk.Tk()
+root.title("Student Information")
 
-    entry_list = ''
-    for entries in my_entries:
-        entry_list = entry_list + str(entries.get()) + '\n'
-        my_label.config(text=entry_list)
-    print(my_entries[0].get())
+entry_name = tk.Entry(root)
+entry_student_number = tk.Entry(root)
+entry_grade = tk.Entry(root)
+entry_info = tk.Entry(root)
+label_name = tk.Label(root, text="Name")
+label_student_number = tk.Label(root, text="Student Number")
+label_grade = tk.Label(root, text="Grade:")
+label_info = tk.Label(root, text="Information:")
+button_display = tk.Button(root, text="Display Info", command=display_info)
 
-for x in range(5):
-    my_entry = Entry(root)
-    my_entry.grid(row=0, column=x, pady=20, padx=5)
-    my_entries.append(my_entry)
 
-my_button = Button(root, text="Click Me!", command=something)
-my_button.grid(row=1, column=0, pady=20)
+
+entry_name.grid(row=0, column=1)
+entry_student_number.grid(row=1, column=1)
+entry_grade.grid(row=2, column=1)
+entry_info.grid(row=3, column=1)
+label_name.grid(row=0, column=0)
+label_student_number.grid(row=1, column=0)
+label_grade.grid(row=2, column=0)
+label_info.grid(row=3, column=0)
+button_display.grid(row=4, columnspan=2)
+
+
+root.mainloop()
